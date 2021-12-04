@@ -1,5 +1,6 @@
 import helper
 
+
 def convert_table(table):
     gridList = []
     current = []
@@ -11,8 +12,10 @@ def convert_table(table):
             current = []
     return gridList
 
+
 def check(table):
     return sum([helper.sum_col(table, i) == -len(table) or sum(table[i]) == -len(table) for i in range(0, len(table))])
+
 
 def execute(numbers, grid_list, part=1):
     for n in numbers:

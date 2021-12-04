@@ -1,6 +1,8 @@
 import re
 import helper
-def f_2020day1(int_table, n = 2):
+
+
+def f_2020day1(int_table, n=2):
     int_table = sorted(list(dict.fromkeys(int_table)))
     for i in range(0, len(int_table)):
         for j in range(i + 1, len(int_table)):
@@ -16,6 +18,7 @@ def f_2020day1(int_table, n = 2):
                     elif int_table[i] + int_table[j] + int_table[k] > 2020:
                         break
 
+
 def exec_2020day1():
     f = open("input/Input_2020day1.txt", "r").read()
     int_table = helper.table_converter(f.split("\n"))
@@ -23,7 +26,7 @@ def exec_2020day1():
     print("Part 2:", f_2020day1(int_table, 3))
 
 
-def f_2020day2(text_table, stage = 1):
+def f_2020day2(text_table, stage=1):
     correct_pwd = 0
     for str in text_table:
         lne = str.split()
@@ -40,6 +43,7 @@ def f_2020day2(text_table, stage = 1):
             if (char_list[min_n - 1] == char) != (char_list[max_n - 1] == char):
                 correct_pwd = correct_pwd + 1
     return correct_pwd
+
 
 def exec_2020day2():
     f = open("input/Input_2020day2.txt", "r").read()
@@ -62,15 +66,17 @@ def f_2020day3(text_table, x_moves, y_moves):
         resp = part_resp * resp
     return resp
 
+
 def exec_2020day3():
     f = open("input/Input_2020day3.txt", "r").read()
     text_table = f.split("\n")
     print("Part 1:", f_2020day3(text_table, [3], [1]))
     print("Part 2:", f_2020day3(text_table, [1, 3, 5, 7, 1], [1, 1, 1, 1, 2]))
 
-def f_2020day4(str, stage = 1):
+
+def f_2020day4(str, stage=1):
     text_table = str.replace("\n", " ").split("  ")
-    valid_table =[]
+    valid_table = []
 
     for elem in text_table:
         id_elements = elem.split(" ")
@@ -87,11 +93,11 @@ def f_2020day4(str, stage = 1):
     valid_table2 = []
     for elem in valid_table:
 
-        if not(elem["byr"].isnumeric() and (int(elem["byr"]) >= 1920 and int(elem["byr"]) <= 2002)): continue
+        if not (elem["byr"].isnumeric() and (int(elem["byr"]) >= 1920 and int(elem["byr"]) <= 2002)): continue
 
-        if not(elem["iyr"].isnumeric() and (int(elem["iyr"]) >= 2010 and int(elem["iyr"]) <= 2020)): continue
+        if not (elem["iyr"].isnumeric() and (int(elem["iyr"]) >= 2010 and int(elem["iyr"]) <= 2020)): continue
 
-        if not(elem["eyr"].isnumeric() and (int(elem["eyr"]) >= 2020 and int(elem["eyr"]) <= 2030)): continue
+        if not (elem["eyr"].isnumeric() and (int(elem["eyr"]) >= 2020 and int(elem["eyr"]) <= 2030)): continue
 
         if re.search("#[0-9a-f]{6}", elem["hcl"]) == None: continue
 
@@ -99,17 +105,21 @@ def f_2020day4(str, stage = 1):
 
         if len(elem["pid"]) != 9 or re.search("[0-9]{9}", elem["pid"]) == None: continue
 
-        if re.search("[0-9]{2}in", elem["hgt"]) != None and  int(elem["hgt"].replace("in","")) >= 59 and int(elem["hgt"].replace("in","")) <= 76:
-                    valid_table2.append(elem)
-        elif re.search("[0-9]{3}cm", elem["hgt"]) != None and int(elem["hgt"].replace("cm","")) >= 150 and int(elem["hgt"].replace("cm","")) <= 193:
-                    valid_table2.append(elem)
+        if re.search("[0-9]{2}in", elem["hgt"]) != None and int(elem["hgt"].replace("in", "")) >= 59 and int(
+                elem["hgt"].replace("in", "")) <= 76:
+            valid_table2.append(elem)
+        elif re.search("[0-9]{3}cm", elem["hgt"]) != None and int(elem["hgt"].replace("cm", "")) >= 150 and int(
+                elem["hgt"].replace("cm", "")) <= 193:
+            valid_table2.append(elem)
 
     return len(valid_table2)
+
 
 def exec_2020day4():
     f = open("input/Input_2020day4.txt", "r").read()
     print("Part 1:", f_2020day4(f))
     print("Part 2:", f_2020day4(f, 2))
+
 
 def f_2020day5(text_table, stage=1):
     seatIds = []
@@ -143,11 +153,13 @@ def f_2020day5(text_table, stage=1):
         fullRange.remove(elem)
     return min(fullRange)
 
+
 def exec_2020day5():
     f = open("input/Input_2020day5.txt", "r").read()
     text_table = f.split("\n")
     print("Part 1:", f_2020day5(text_table))
     print("Part 2:", f_2020day5(text_table, 2))
+
 
 def f_2020day6_part1(str):
     text_table = str.replace("\n\n", " ").replace("\n", "").split(" ")
@@ -160,6 +172,7 @@ def f_2020day6_part1(str):
         size += len(tab)
     return size
 
+
 def f_2020day6_part2(str):
     text_table = str.split("\n\n")
     count = 0
@@ -171,6 +184,7 @@ def f_2020day6_part2(str):
             if elem.count(c) == splt:
                 count += 1
     return count
+
 
 def exec_2020day6():
     f = open("input/Input_2020day6.txt", "r").read()
