@@ -3,8 +3,7 @@ import Helper
 def convert_Table(table):
     gridList = []
     current = []
-    while len(table) > 0:
-        elem = table.pop(0)
+    for elem in table:
         if elem != "":
             current.append(Helper.table_converter(elem.strip().replace("  ", ",").replace(" ", ",").split(",")))
         else:
