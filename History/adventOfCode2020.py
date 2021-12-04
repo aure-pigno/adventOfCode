@@ -1,5 +1,5 @@
 import re
-import Helper
+import helper
 def f_2020day1(int_table, n = 2):
     int_table = sorted(list(dict.fromkeys(int_table)))
     for i in range(0, len(int_table)):
@@ -18,7 +18,7 @@ def f_2020day1(int_table, n = 2):
 
 def exec_2020day1():
     f = open("input/Input_2020day1.txt", "r").read()
-    int_table = Helper.table_converter(f.split("\n"))
+    int_table = helper.table_converter(f.split("\n"))
     print("Part 1:", f_2020day1(int_table))
     print("Part 2:", f_2020day1(int_table, 3))
 
@@ -31,7 +31,7 @@ def f_2020day2(text_table, stage = 1):
         min_n = int(range[0])
         max_n = int(range[1])
         char = lne[1].replace(":", "")
-        char_list = Helper.split(lne[2])
+        char_list = helper.split(lne[2])
         if stage == 1:
             cnt = char_list.count(char)
             if cnt >= min_n and cnt <= max_n:
@@ -49,7 +49,7 @@ def exec_2020day2():
 
 
 def f_2020day3(text_table, x_moves, y_moves):
-    int_table = [Helper.table_converter(Helper.split(elem.replace(".", "0").replace("#", "1"))) for elem in text_table]
+    int_table = [helper.table_converter(helper.split(elem.replace(".", "0").replace("#", "1"))) for elem in text_table]
     resp = 1
     for k in range(0, len(x_moves)):
         x, y, part_resp = 0, 0, 0
@@ -151,7 +151,7 @@ def exec_2020day5():
 
 def f_2020day6_part1(str):
     text_table = str.replace("\n\n", " ").replace("\n", "").split(" ")
-    text_table = [Helper.split(word) for word in text_table]
+    text_table = [helper.split(word) for word in text_table]
     final_table = []
     size = 0
     for elem in text_table:
