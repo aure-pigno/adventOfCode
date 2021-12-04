@@ -43,3 +43,28 @@ def exec_2021day3():
     text_table = f.split("\n")
     print("Part 1:", f_2021day3(text_table))
     print("Part 2:", f_2021day3(text_table, 2))
+
+def f_2021day4(lne, tbles, part=1):
+    for n in lne:
+        for i in range(0, len(tbles)):
+            tbl = Helper.replace(tbles.pop(0), n, -1)
+            if Helper.f_2021day4_check(tbl):
+                tbl = Helper.replace(tbl, -1, 0)
+                sum = Helper.sumTable(tbl, -1)
+                if part == 1 or len(tbles) == 0:
+                    return sum*n
+                else:
+                    continue
+            tbles.append(tbl)
+    return None
+
+def exec_2021day4():
+    f = open("input/Input_2021day4.txt", "r").read()
+    text_table = f.split("\n")
+    tbl = Helper.f_2021day4_convert_Table(text_table)
+    lne = (tbl.pop(0))[0]
+
+    print("Part 1:", f_2021day4(lne, tbl))
+    print("Part 2:", f_2021day4(lne, tbl, 2))
+
+
