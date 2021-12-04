@@ -13,10 +13,8 @@ def convert_Table(table):
     return gridList
 
 def check(table):
-    for i in range(0, len(table)):
-        if Helper.sumTable(table, i) == -len(table) or Helper.sumTable(table, i, False) == -len(table):
-            return True
-    return False
+    return sum([Helper.sumCol(table, i) == -len(table) or sum(table[i]) == -len(table) for i in range(0, len(table))])
+
 
 def execute(numbers, grid_list, part=1):
     for n in numbers:
@@ -24,9 +22,8 @@ def execute(numbers, grid_list, part=1):
             grid = Helper.replace(grid_list.pop(0), n, -1)
             if check(grid):
                 grid = Helper.replace(grid, -1, 0)
-                sum = Helper.sumTable(grid, -1)
                 if part == 1 or len(grid_list) == 0:
-                    return sum*n
+                    return Helper.sumTable(grid)*n
                 else:
                     continue
             grid_list.append(grid)
