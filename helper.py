@@ -17,5 +17,10 @@ def sum_table(table):
 def replace(table, v, new_v):
     return [[new_v if x == v else x for x in elem] for elem in table]
 
-def max_index(table, i):
-    return max([elem[i] for elem in table])
+
+def max_t(table):
+    return max([max(elem) for elem in table])
+
+
+def empty_grid(x, y=None):
+    return [[0 for i in range(x)] for j in range(x if y is None else y)]

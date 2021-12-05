@@ -6,9 +6,8 @@ def convert_table(t):
 
 
 def execute(input, part=1):
-    range_t = lambda i: range(max(helper.max_index(t, i), helper.max_index(t, i + 2)) + 1)
     t = [e for e in input if e[0] == e[2] or e[1] == e[3] or (part != 1 and (abs(e[0] - e[2]) == abs(e[1] - e[3])))]
-    grid = [[0 for i in range_t(0)] for j in range_t(1)]
+    grid = helper.empty_grid(helper.max_t(t) + 1)
     for elem in t:
         [p1, p2] = [[elem[0], elem[1]], [elem[2], elem[3]]]
         delta_x = 0 if p2[0] == p1[0] else 1 if p2[0] > p1[0] else -1
