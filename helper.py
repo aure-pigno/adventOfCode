@@ -18,7 +18,7 @@ def replace(table, v, new_v):
     return [[new_v if x == v else x for x in elem] for elem in table]
 
 
-def max_t(table):
+def max_table(table):
     return max([max(elem) for elem in table])
 
 

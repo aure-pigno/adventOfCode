@@ -4,6 +4,7 @@ import aoc_2021_2
 import aoc_2021_3
 import aoc_2021_4
 import aoc_2021_5
+import aoc_2021_6
 
 
 def exec_2021day1():
@@ -42,3 +43,10 @@ def exec_2021day5():
     tbl = aoc_2021_5.convert_table(text_table)
     print("Day 5, Part 1:", aoc_2021_5.execute(tbl))
     print("Day 5, Part 2:", aoc_2021_5.execute(tbl, 2))
+
+def exec_2021day6():
+    f = open("input/Input_2021day6.txt", "r").read()
+    text_table = f.split("\n")
+    tbl = aoc_2021_6.convert_table(text_table)
+    print("Day 6, Part 1:", aoc_2021_6.execute(tbl))
+    print("Day 6, Part 2:", aoc_2021_6.execute(tbl, 2))
