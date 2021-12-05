@@ -20,10 +20,13 @@ def execute(n):
         solver = AOCSolver_2021_5(n)
     elif n == 6:
         solver = AOCSolver_2021_6(n)
+    else:
+        print("---")
+        print("Day", n, "not implemented yet")
+        return
     solver.solve(1)
     solver.solve(2)
 
 
-
-execute(5)
-#execute(6)
+for i in range(1,6):
+    execute(i)

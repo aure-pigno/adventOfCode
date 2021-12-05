@@ -3,7 +3,6 @@ from AOCSolver import AOCSolver
 
 
 class AOCSolver_2021_4(AOCSolver):
-    table = []
     numbers = []
 
     def parse(self, input):

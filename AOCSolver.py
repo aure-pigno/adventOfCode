@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class AOCSolver:
-
+    table = []
     def __init__(self, n):
         t1 = datetime.now()
         f = open("input/Input_2021day"+str(n)+".txt", "r").read()

@@ -3,7 +3,6 @@ from AOCSolver import AOCSolver
 
 
 class AOCSolver_2021_1(AOCSolver):
-    table = []
 
     def parse(self, input):
         self.table = helper.table_converter(input.split("\n"))
