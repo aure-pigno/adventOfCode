@@ -1,6 +1,7 @@
 import helper
 from AOCSolver import AOCSolver
 
+
 class AOCSolver_2021_6(AOCSolver):
     table = []
 

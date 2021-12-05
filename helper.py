@@ -21,6 +21,9 @@ def replace(table, v, new_v):
 def max_table(table):
     return max([max(elem) for elem in table])
 
+def copy_table(table):
+    return [elem for elem in table]
+
 
 def empty_grid(x, y=None):
     return [[0 for i in range(x)] for j in range(x if y is None else y)]

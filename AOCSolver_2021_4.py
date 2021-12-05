@@ -1,9 +1,10 @@
 import helper
 from AOCSolver import AOCSolver
 
+
 class AOCSolver_2021_4(AOCSolver):
     table = []
-    lne = []
+    numbers = []
 
     def parse(self, input):
         self.table = []
@@ -15,12 +16,12 @@ class AOCSolver_2021_4(AOCSolver):
                 self.table.append(current)
                 current = []
 
-        self.lne = (self.table.pop(0))[0]
+        self.numbers = (self.table.pop(0))[0]
 
     def execute(self, part=1):
-        grid_list = self.table
+        grid_list = helper.copy_table(self.table)
         check = lambda g: sum([helper.sum_col(g, i) == -len(g) or sum(g[i]) == -len(g) for i in range(0, len(g))])
-        for n in self.lne:
+        for n in self.numbers:
             for i in range(0, len(grid_list)):
                 grid = helper.replace(grid_list.pop(0), n, -1)
                 if check(grid):

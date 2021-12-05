@@ -9,7 +9,8 @@ class AOCSolver:
         f = open("input/Input_2021day"+str(n)+".txt", "r").read()
         self.parse(f)
         t2 = datetime.now()
-        print("Day", n, "init:", (t2 - t1))
+        print("---")
+        print("Day ", n, "init:", (t2 - t1))
 
     def part1(self):
         return self.execute(1)
