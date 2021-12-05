@@ -4,9 +4,6 @@ from AOCSolver import AOCSolver
 
 class AOCSolver_2021_2(AOCSolver):
 
-    def parse(self, input):
-        self.table = input.split("\n")
-
     def execute(self, part=1):
         x, y1, y2 = 0, 0, 0
         comp = lambda k, v: [x + v * (k == "forward"), y1 + v * y2 * (k == "forward"), y2 + v * ((k == "down") - (k == "up"))]

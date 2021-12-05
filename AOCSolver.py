@@ -27,9 +27,8 @@ class AOCSolver:
         t2 = datetime.now()
         print("Part", n, "result:", result, "duration:", (t2 - t1))
 
-    @abstractmethod
     def parse(self, input):
-        pass
+        self.table = input.split("\n")
 
     @abstractmethod
     def execute(self, part):
