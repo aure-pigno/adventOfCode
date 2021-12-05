@@ -39,5 +39,6 @@ def exec_2021day4():
 def exec_2021day5():
     f = open("input/Input_2021day5.txt", "r").read()
     text_table = f.split("\n")
-    print("Day 5, Part 1:", aoc_2021_5.execute(text_table))
-    print("Day 5, Part 2:", aoc_2021_5.execute(text_table, 2))
+    tbl = aoc_2021_5.convert_table(text_table)
+    print("Day 5, Part 1:", aoc_2021_5.execute(tbl))
+    print("Day 5, Part 2:", aoc_2021_5.execute(tbl, 2))

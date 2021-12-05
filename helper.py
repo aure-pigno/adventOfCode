@@ -16,3 +16,6 @@ def sum_table(table):
 
 def replace(table, v, new_v):
     return [[new_v if x == v else x for x in elem] for elem in table]
+
+def max_index(table, i):
+    return max([elem[i] for elem in table])
