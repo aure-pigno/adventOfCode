@@ -14,7 +14,6 @@ class AOCSolver_2021_4(AOCSolver):
             else:
                 self.table.append(current)
                 current = []
-
         self.numbers = (self.table.pop(0))[0]
 
     def execute(self, part=1):
