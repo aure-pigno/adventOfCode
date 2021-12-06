@@ -82,5 +82,5 @@ def execute(n):
     solver.solve(2)
 
 
-for i in range(1,26):
+for i in range(6,7):
     execute(i)
