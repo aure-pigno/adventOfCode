@@ -33,3 +33,6 @@ def empty_grid(x, y=None):
 def median(lst):
     l, s = len(lst), sorted(lst)
     return (sum(s[l//2-1:l//2+1])/2.0, s[l//2])[l % 2] if l else None
+
+def average(lst):
+    return sum(lst)/len(lst)
