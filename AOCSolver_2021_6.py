@@ -8,7 +8,7 @@ class AOCSolver_2021_6(AOCSolver):
     def parse(self, input):
         self.table = helper.table_converter(input.replace("\n", "").split(","))
 
-    def execute(self, it=1, repro = 6, mx = 8):
+    def execute(self, it=1, repro=6, mx=8):
         lst = [0 for i in range(mx + 1)]
         for elem in self.table:
             lst[elem] += 1

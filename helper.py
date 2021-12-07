@@ -28,3 +28,8 @@ def copy_table(table):
 
 def empty_grid(x, y=None):
     return [[0 for i in range(x)] for j in range(x if y is None else y)]
+
+
+def median(lst):
+    l, s = len(lst), sorted(lst)
+    return (sum(s[l//2-1:l//2+1])/2.0, s[l//2])[l % 2] if l else None
