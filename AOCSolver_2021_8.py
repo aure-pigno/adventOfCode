@@ -5,21 +5,18 @@ from AOCSolver import AOCSolver
 class AOCSolver_2021_8(AOCSolver):
 
     def parse(self, input):
-        self.table = input.split("\n")
+        self.table = [[elem.split(" ") for elem in line.split(" | ")]for line in input.split("\n")]
 
     def execute(self, part=1):
 
         count = 0
-        for line in self.table:
-            elems = line.split(" | ")
-            res = elems[1].split(" ")
-
+        for [input, output] in self.table:
             if part == 1:
-                count += sum([len(e) != 5 and len(e) != 6 for e in res])
+                count += sum([len(e) != 5 and len(e) != 6 for e in output])
                 continue
 
-            n = self.compute_sequence(elems[0].split(" "))
-            count += sum([10**(3-i)*n.index(sorted(helper.split(res[i]))) for i in range(0, 4)])
+            n = self.compute_sequence(input)
+            count += sum([10**(3-i)*n.index(sorted(helper.split(output[i]))) for i in range(0, 4)])
         return count
 
     # . 0 .
