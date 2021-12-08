@@ -12,14 +12,14 @@ class AOCSolver_2021_8(AOCSolver):
         count = 0
         for line in self.table:
             elems = line.split(" | ")
-            results = elems[1].split(" ")
+            res = elems[1].split(" ")
 
             if part == 1:
-                count += sum([len(e) == 2 or len(e) == 3 or len(e) == 4 or len(e) == 7 for e in results])
+                count += sum([len(e) == 2 or len(e) == 3 or len(e) == 4 or len(e) == 7 for e in res])
                 continue
 
             n = self.compute_sequence(elems[0].split(" "))
-            count += sum([10**(3-i)*n.index("".join(sorted(helper.split(results[i])))) for i in range(0, 4)])
+            count += sum([10**(3-i)*n.index(sorted(helper.split(res[i]))) for i in range(0, 4)])
         return count
 
     # . 0 .
@@ -68,14 +68,14 @@ class AOCSolver_2021_8(AOCSolver):
     @staticmethod
     def find_numbers(map):
         return [
-            "".join(sorted(helper.flatten(map[0] + map[1] + map[2] + map[4] + map[5] + map[6]))),
-            "".join(sorted(helper.flatten(map[2] + map[5]))),
-            "".join(sorted(helper.flatten(map[0] + map[2] + map[3] + map[4] + map[6]))),
-            "".join(sorted(helper.flatten(map[0] + map[2] + map[3] + map[5] + map[6]))),
-            "".join(sorted(helper.flatten(map[1] + map[2] + map[3] + map[5]))),
-            "".join(sorted(helper.flatten(map[0] + map[1] + map[3] + map[5] + map[6]))),
-            "".join(sorted(helper.flatten(map[0] + map[1] + map[3] + map[4] + map[5] + map[6]))),
-            "".join(sorted(helper.flatten(map[0] + map[2] + map[5]))),
-            "".join(sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[4] + map[5] + map[6]))),
-            "".join(sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[5] + map[6])))
+            sorted(helper.flatten(map[0] + map[1] + map[2] + map[4] + map[5] + map[6])),
+            sorted(helper.flatten(map[2] + map[5])),
+            sorted(helper.flatten(map[0] + map[2] + map[3] + map[4] + map[6])),
+            sorted(helper.flatten(map[0] + map[2] + map[3] + map[5] + map[6])),
+            sorted(helper.flatten(map[1] + map[2] + map[3] + map[5])),
+            sorted(helper.flatten(map[0] + map[1] + map[3] + map[5] + map[6])),
+            sorted(helper.flatten(map[0] + map[1] + map[3] + map[4] + map[5] + map[6])),
+            sorted(helper.flatten(map[0] + map[2] + map[5])),
+            sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[4] + map[5] + map[6])),
+            sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[5] + map[6]))
         ]
