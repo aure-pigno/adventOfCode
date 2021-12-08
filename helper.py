@@ -36,3 +36,10 @@ def median(lst):
 
 def average(lst):
     return sum(lst)/len(lst)
+
+def flatten(t):
+    return [item for sublist in t for item in sublist]
+
+def delta_list(lsts):
+    lst = flatten(lsts)
+    return [v for v in lst if lst.count(v) == 1]
