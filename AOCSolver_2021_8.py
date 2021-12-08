@@ -30,13 +30,13 @@ class AOCSolver_2021_8(AOCSolver):
     def compute_sequence(self, digits):
         size_map = self.compute_size_map(digits)
         map = [[] for i in range(0, 7)]
-        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]]) # diff between 1 and 7
-        map[1] = helper.delta_list([size_map[2][0], size_map[4][0]]) # diff between 1 and 4
-        map[2] = size_map[2][0] # 1
-        map[3] = map[1] # diff between 1 and 4
-        map[4] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']]) # Not in (4 & diff(1, 7))
-        map[5] = map[2] # 1
-        map[6] = map[4] # Not in (4 & diff(1, 7))
+        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]]) #  = diff(1, 7)
+        map[1] = helper.delta_list([size_map[2][0], size_map[4][0]]) # in diff(1, 4)
+        map[2] = size_map[2][0] # in 1
+        map[3] = map[1] # in diff(1, 4)
+        map[4] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']]) # Not in diff(4, diff(1, 7))
+        map[5] = map[2] # in 1
+        map[6] = map[4] # Not in diff(4, diff(1, 7))
 
         for n in size_map[6]: # search 6
             delta = helper.delta_list([n, size_map[7][0]]) # diff between 8 and (0, 6 or 9)
