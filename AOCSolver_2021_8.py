@@ -30,19 +30,13 @@ class AOCSolver_2021_8(AOCSolver):
     def compute_sequence(self, digits):
         size_map = self.compute_size_map(digits)
         map = [[] for i in range(0, 7)]
-        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]]) #  = diff(1, 7)
-        map[1] = helper.delta_list([size_map[2][0], size_map[4][0]]) # in diff(1, 4)
-        map[2] = size_map[2][0] # in 1
-        map[3] = map[1] # in diff(1, 4)
-        map[4] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']]) # Not in diff(4, diff(1, 7))
-        map[5] = map[2] # in 1
-        map[6] = map[4] # Not in diff(4, diff(1, 7))
+        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]]) # diff(1, 7)
 
         for n in size_map[6]: # search 6
             delta = helper.delta_list([n, size_map[7][0]]) # diff between 8 and (0, 6 or 9)
-            if delta[0] in map[2]: # if delta is in map 2 (n is 6)
+            if delta[0] in size_map[2][0]: # if delta is in map 2 (n is 6)
                 map[2] = delta
-                map[5] = helper.delta_list([map[2], map[5]])
+                map[5] = helper.delta_list([size_map[2][0], delta])
                 six = n
                 size_map[6].remove(n)
                 break
@@ -51,14 +45,14 @@ class AOCSolver_2021_8(AOCSolver):
             delta = helper.delta_list([six, n]) # diff between 6 and (2, 3 or 5)
             if len(delta) == 1: # only one change with 6 (n is 5)
                 map[4] = delta
-                map[6] = helper.delta_list([map[4], map[6]])
+                map[6] = helper.delta_list([size_map[3][0], size_map[4][0], ['a', 'b', 'c', 'd', 'e', 'f', 'g'] , delta])
                 break
 
         for n in size_map[6]: # search 0
-            delta = helper.delta_list([helper.flatten([map[0], map[2], map[4], map[5], map[6]]), n])
+            delta = helper.delta_list([helper.flatten(map), n])
             if len(delta) == 1:
                 map[1] = delta
-                map[3] = helper.delta_list([map[1], map[3]])
+                map[3] = helper.delta_list([size_map[2][0], size_map[4][0], delta])
                 break
 
         return self.find_numbers(map)
