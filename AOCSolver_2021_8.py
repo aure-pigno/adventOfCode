@@ -18,12 +18,58 @@ class AOCSolver_2021_8(AOCSolver):
                 count += sum([len(e) == 2 or len(e) == 3 or len(e) == 4 or len(e) == 7 for e in results])
                 continue
 
-            size_map = self.compute_size_map(elems[0].split(" "))
-            map = self.compute_map(size_map)
-
-            n = self.find_numbers(map)
+            n = self.compute_sequence(elems[0].split(" "))
             count += sum([10**(3-i)*n.index("".join(sorted(helper.split(results[i])))) for i in range(0, 4)])
         return count
+
+    # . 0 .
+    # 1 . 2
+    # . 3 .
+    # 4 . 5
+    # . 6 .
+    def compute_sequence(self, digits):
+        size_map = self.compute_size_map(digits)
+        map = [[] for i in range(0, 7)]
+        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]]) # diff between 1 and 7
+        map[1] = helper.delta_list([size_map[2][0], size_map[4][0]]) # diff between 1 and 4
+        map[2] = size_map[2][0] # 1
+        map[3] = map[1] # diff between 1 and 4
+        map[4] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']]) # Not in (4 & diff(1, 7))
+        map[5] = map[2] # 1
+        map[6] = map[4] # Not in (4 & diff(1, 7))
+
+        for n in size_map[6]: # search 6
+            delta = helper.delta_list([n, size_map[7][0]]) # diff between 8 and (0, 6 or 9)
+            if delta[0] in map[2]: # if delta is in map 2 (n is 6)
+                map[2] = delta
+                map[5] = helper.delta_list([map[2], map[5]])
+                six = n
+                size_map[6].remove(n)
+                break
+
+        for n in size_map[5]: # search 5
+            delta = helper.delta_list([six, n]) # diff between 6 and (2, 3 or 5)
+            if len(delta) == 1: # only one change with 6 (n is 5)
+                map[4] = delta
+                map[6] = helper.delta_list([map[4], map[6]])
+                break
+
+        for n in size_map[6]: # search 0
+            delta = helper.delta_list([helper.flatten([map[0], map[2], map[4], map[5], map[6]]), n])
+            if len(delta) == 1:
+                map[1] = delta
+                map[3] = helper.delta_list([map[1], map[3]])
+                break
+
+        return self.find_numbers(map)
+
+    @staticmethod
+    def compute_size_map(digits):
+        size_map = {2:[], 3:[], 4:[], 5:[], 6:[], 7:[]}
+        for w in digits:
+            char = helper.split(w)
+            size_map[len(char)].append(char)
+        return size_map
 
     @staticmethod
     def find_numbers(map):
@@ -39,45 +85,3 @@ class AOCSolver_2021_8(AOCSolver):
             "".join(sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[4] + map[5] + map[6]))),
             "".join(sorted(helper.flatten(map[0] + map[1] + map[2] + map[3] + map[5] + map[6])))
         ]
-
-    @staticmethod
-    def compute_size_map(digits):
-        size_map = {}
-        for e in [6, 2, 5, 5, 4, 5, 6, 3, 7, 6]:
-            size_map[e] = []
-        for w in digits:
-            char = helper.split(w)
-            size_map[len(char)].append(char)
-        return size_map
-
-    @staticmethod
-    def compute_map(size_map):
-        map = [[] for i in range(0, 7)]
-        map[0] = helper.delta_list([size_map[2][0], size_map[3][0]])
-        map[1] = helper.delta_list([size_map[2][0], size_map[4][0]])
-        map[2] = size_map[2][0]
-        map[3] = helper.delta_list([size_map[2][0], size_map[4][0]])
-        map[4] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']])
-        map[5] = size_map[2][0]
-        map[6] = helper.delta_list([size_map[4][0], map[0], ['a', 'b', 'c', 'd', 'e', 'f', 'g']])
-
-        for e in size_map[6]:
-            delta = helper.delta_list([e, size_map[7][0]])
-            if delta[0] in map[2]:
-                map[2] = delta
-                map[5] = helper.delta_list([map[2], map[5]])
-                for f in size_map[5]:
-                    delta2 = helper.delta_list([e, f])
-                    if len(delta2) == 1:
-                        map[4] = delta2
-                        map[6] = helper.delta_list([map[4], map[6]])
-                        size_map[6].remove(e)
-                        break
-
-        for e in size_map[6]:
-            delta = helper.delta_list([helper.flatten([map[0], map[2], map[4], map[5], map[6]]), e])
-            if len(delta) == 1:
-                map[1] = delta
-                map[3] = helper.delta_list([map[1], map[3]])
-                break
-        return map
