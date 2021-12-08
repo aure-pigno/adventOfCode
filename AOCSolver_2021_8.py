@@ -15,7 +15,7 @@ class AOCSolver_2021_8(AOCSolver):
             res = elems[1].split(" ")
 
             if part == 1:
-                count += sum([len(e) == 2 or len(e) == 3 or len(e) == 4 or len(e) == 7 for e in res])
+                count += sum([len(e) != 5 and len(e) != 6 for e in res])
                 continue
 
             n = self.compute_sequence(elems[0].split(" "))
@@ -61,8 +61,7 @@ class AOCSolver_2021_8(AOCSolver):
     def compute_size_map(digits):
         size_map = {2:[], 3:[], 4:[], 5:[], 6:[], 7:[]}
         for w in digits:
-            char = helper.split(w)
-            size_map[len(char)].append(char)
+            size_map[len(w)].append(helper.split(w))
         return size_map
 
     @staticmethod
