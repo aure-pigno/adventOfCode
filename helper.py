@@ -1,7 +1,6 @@
 def split(word):
     return [char for char in word]
 
-
 def table_converter(text_table):
     return [int(i) for i in text_table]
 
@@ -29,6 +28,12 @@ def copy_table(table):
 def empty_grid(x, y=None):
     return [[0 for i in range(x)] for j in range(x if y is None else y)]
 
+
+def multiply_list(myList):
+    result = 1
+    for x in myList:
+        result = result * x
+    return result
 
 def median(lst):
     l, s = len(lst), sorted(lst)
