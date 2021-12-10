@@ -35,15 +35,19 @@ def multiply_list(myList):
         result = result * x
     return result
 
+
 def median(lst):
     l, s = len(lst), sorted(lst)
     return (sum(s[l//2-1:l//2+1])/2.0, s[l//2])[l % 2] if l else None
 
+
 def average(lst):
     return sum(lst)/len(lst)
 
+
 def flatten(t):
     return [item for sublist in t for item in sublist]
+
 
 def delta_list(lsts):
     lst = flatten(lsts)
