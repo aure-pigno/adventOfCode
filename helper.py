@@ -52,3 +52,15 @@ def flatten(t):
 def delta_list(lsts):
     lst = flatten(lsts)
     return [v for v in lst if lst.count(v) == 1]
+
+
+def add(table, v):
+    return [[x + v for x in line] for line in table]
+
+
+def contains(table, v):
+    return sum([sum([x == v for x in line]) for line in table]) != 0
+
+
+def isLower(str):
+    return sum([c.lower() == c for c in str]) != 0
