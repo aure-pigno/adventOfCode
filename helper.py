@@ -60,7 +60,3 @@ def add(table, v):
 
 def contains(table, v):
     return sum([sum([x == v for x in line]) for line in table]) != 0
-
-
-def isLower(str):
-    return sum([c.lower() == c for c in str]) != 0
