@@ -47,4 +47,3 @@ class AOCSolver_2021_13(AOCSolver):
                 elif not(h) and x > pos:
                     new_table[y][2 * pos - x] = max(table[y][x], new_table[y][2 * pos - x])
         return new_table
-    

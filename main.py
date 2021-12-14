@@ -79,8 +79,8 @@ def execute(n):
         solver = AOCSolver_2021_25(n)
 
     solver.solve(1)
-    solver.solve(2)
+    #solver.solve(2)
 
 
-for i in range(13,14):
+for i in range(15,16):
     execute(i)
