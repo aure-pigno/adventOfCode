@@ -24,7 +24,6 @@ from AOCSolver_2021_23 import AOCSolver_2021_23
 from AOCSolver_2021_24 import AOCSolver_2021_24
 from AOCSolver_2021_25 import AOCSolver_2021_25
 
-
 def execute(n):
     solver = None
     if n == 1:
@@ -79,7 +78,7 @@ def execute(n):
         solver = AOCSolver_2021_25(n)
 
     solver.solve(1)
-    #solver.solve(2)
+    solver.solve(2)
 
 
 for i in range(15,16):
