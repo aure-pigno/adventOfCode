@@ -60,3 +60,25 @@ def add(table, v):
 
 def contains(table, v):
     return sum([sum([x == v for x in line]) for line in table]) != 0
+
+def get_neighbours(t, j, i, diag=False):
+    ngh = []
+    if i > 0:
+        ngh.append(t[j][i - 1])
+        if diag:
+            if j > 0:
+                ngh.append([j - 1][i - 1])
+            if j < len(t) - 1:
+                ngh.append([j + 1][i - 1])
+    if i < len(t[0]) - 1:
+        ngh.append(t[j][i + 1])
+        if diag:
+            if j > 0:
+                ngh.append([j - 1][i + 1])
+            if j < len(t) - 1:
+                ngh.append([j + 1][i + 1])
+    if j > 0:
+        ngh.append(t[j - 1][i])
+    if j < len(t[0]) - 1:
+        ngh.append(t[j + 1][i])
+    return ngh
