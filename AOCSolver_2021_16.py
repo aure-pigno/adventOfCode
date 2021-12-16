@@ -20,14 +20,18 @@ class AOCSolver_2021_16(AOCSolver):
         [p.version, pos] = self.read_bits(pos, 3)
         [p.type, pos] = self.read_bits(pos, 3)
         if p.type == 4:
-            [p.literal, pos] = self.get_literal(pos)
+            is_not_last = True
+            while is_not_last:
+                [is_not_last, pos] = self.read_bits(pos, 1)
+                [b, pos] = self.read_bits(pos, 4, False)
+                p.literal += b
             return [p, pos]
 
         [p.length_type, pos] = self.read_bits(pos, 1)
-        [packets_length, pos] = self.read_bits(pos, 11 if p.length_type else 15)
+        [length, pos] = self.read_bits(pos, 11 if p.length_type else 15)
 
         cur_pos, i = pos, 0
-        while (not(p.length_type) and pos < cur_pos + packets_length) or (p.length_type and i < packets_length):
+        while (not(p.length_type) and pos < cur_pos + length) or (p.length_type and i < length):
             [np, pos] = self.parse_packet(pos)
             p.sub_packets.append(np)
             i += 1
@@ -37,20 +41,12 @@ class AOCSolver_2021_16(AOCSolver):
         v = self.binary_data[pos:(pos + num)]
         return [int("0b" + v, 2) if number else v, (pos + num)]
 
-    def get_literal(self, pos):
-        is_not_last, v = True, ""
-        while is_not_last:
-            [is_not_last, pos] = self.read_bits(pos, 1)
-            [b, pos] = self.read_bits(pos, 4, False)
-            v += b
-        return [int(v, 2), pos]
-
 
 class Packet:
     def __init__(self):
         self.version = None
         self.type = None
-        self.literal = None
+        self.literal = ""
         self.length_type = None
         self.sub_packets = []
 
@@ -68,7 +64,7 @@ class Packet:
         elif self.type == 3:
             return max(sub_values)
         elif self.type == 4:
-            return self.literal
+            return int(self.literal, 2)
         elif self.type == 5:
             return sub_values[0] > sub_values[1]
         elif self.type == 6:
