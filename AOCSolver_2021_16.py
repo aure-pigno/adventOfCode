@@ -34,9 +34,8 @@ class AOCSolver_2021_16(AOCSolver):
         return [p, pos]
 
     def read_bits(self, pos, num, number=True):
-        if number:
-            return [int("0b" + self.binary_data[pos:(pos + num)], 2), (pos + num)]
-        return [self.binary_data[pos:(pos + num)], (pos + num)]
+        v = self.binary_data[pos:(pos + num)]
+        return [int("0b" + v, 2) if number else v, (pos + num)]
 
     def get_literal(self, pos):
         is_not_last, v = True, ""
