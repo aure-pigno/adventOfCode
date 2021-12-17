@@ -58,8 +58,19 @@ def add(table, v):
     return [[x + v for x in line] for line in table]
 
 
+def sum_list(l1, l2):
+    return [l1[i] + l2[i] for i in range(len(l1))]
+
+
+def remove_elems(l, s):
+    for v in l:
+        s = s.replace(v,"")
+    return s
+
+
 def contains(table, v):
     return sum([sum([x == v for x in line]) for line in table]) != 0
+
 
 def get_neighbours(t, j, i, diag=False):
     ngh = []
