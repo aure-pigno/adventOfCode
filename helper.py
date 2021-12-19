@@ -62,6 +62,14 @@ def sum_list(l1, l2):
     return [l1[i] + l2[i] for i in range(len(l1))]
 
 
+def sub_list(l1, l2):
+    return [l1[i] - l2[i] for i in range(len(l1))]
+
+
+def dist_list(l1, l2):
+    return sum([abs(l1[i] - l2[i]) for i in range(len(l1))])
+
+
 def remove_elems(l, s):
     for v in l:
         s = s.replace(v,"")
