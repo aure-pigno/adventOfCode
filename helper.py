@@ -1,8 +1,13 @@
 def split(word):
     return [char for char in word]
 
+
 def table_converter(text_table):
     return [int(i) for i in text_table]
+
+
+def split_convert(word):
+    return [int(v) for v in split(word)]
 
 
 def sum_col(table, i):
