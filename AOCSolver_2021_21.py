@@ -4,27 +4,21 @@ from collections import defaultdict
 
 class AOCSolver_2021_21(AOCSolver):
 
+    wins = [0, 0]
+
     def parse(self, input):
         self.table = [int(x.split(": ")[1]) for x in input.strip().split('\n')]
-        self.wins = [0, 0]
-
-
 
     def execute(self, part=1):
         pos = helper.copy_table(self.table)
-        score = [0, 0]
-        roll = 1
-        player = 0
         if part == 1:
+            score, roll, player = [0, 0], 1, 0
             while True:
-                new_pos = (pos[player] + 2 + 3 * roll) % 10 + 1
-                score[player] += new_pos
+                pos[player], score[player] = self.compute_new_state(pos[player], score[player], 3 * roll + 3)
                 roll += 3
-                pos[player] = new_pos
                 if score[player] >= 1000:
                     return score[1 - player] * (roll - 1)
                 player = 1 - player
-
 
         poss = {(0, 0, pos[0],pos[1]): 1}
         count = [0 for i in range(10)]
