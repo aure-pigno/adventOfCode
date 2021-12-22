@@ -1,22 +1,18 @@
 import helper
 from AOCSolver import AOCSolver
-import itertools
+
 
 class AOCSolver_2021_19(AOCSolver):
 
-
     d0 = [(0, 0, 0)]
     scanners = []
+
     def parse(self, input):
         self.scanners = [scanner(s) for s in [[eval("[" + x + "]") for x in l.split("\n")[1:]] for l in input.strip().split('\n\n')]]
 
     def execute(self, part=1):
-        aligned = set()
-        not_aligned = set()
-        aligned_map = {}
-        aligned.add(0)
-        aligned_map[0] = self.scanners[0]
-        self.scanners[0].aligned = True
+        aligned, not_aligned = {0}, set()
+        aligned_map = {0: self.scanners[0]}
         all_aligned = [tuple(x) for x in self.scanners[0].beacons]
 
         while len(aligned) < len(self.scanners):

@@ -3,10 +3,10 @@ from AOCSolver import AOCSolver
 
 
 class AOCSolver_2021_4(AOCSolver):
+
     numbers = []
 
     def parse(self, input):
-        self.table = []
         current = []
         for elem in input.split("\n"):
             if elem != "":

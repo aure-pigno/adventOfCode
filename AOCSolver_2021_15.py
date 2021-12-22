@@ -1,8 +1,8 @@
 import helper
 from AOCSolver import AOCSolver
 
-class AOCSolver_2021_15(AOCSolver):
 
+class AOCSolver_2021_15(AOCSolver):
 
     def parse(self, input):
         self.table = [[int(x) for x in helper.split(line)] for line in input.split("\n")]

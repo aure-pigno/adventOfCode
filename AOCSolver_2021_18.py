@@ -4,6 +4,7 @@ import itertools
 import math
 from functools import reduce
 
+
 class AOCSolver_2021_18(AOCSolver):
 
     def parse(self, input):
