@@ -17,17 +17,17 @@ class AOCSolver_2021_22(AOCSolver):
         answer = 0
         for idx, item in enumerate(t):
             if item["is_on"]:
-                answer += self.count_overlap(item, t[idx + 1:])
+                answer += self.count_no_overlap(item, t[idx + 1:])
         return answer
 
-    def count_overlap(self, item, rest):
+    def count_no_overlap(self, item, rest):
         overlap = []
         for item2 in rest:
             new_item = self.compute_range(item, item2)
             if new_item["len"] != 0:
                 overlap.append(new_item)
         for idx, item2 in enumerate(overlap):
-            item["len"] -= self.count_overlap(item2, overlap[idx + 1:])
+            item["len"] -= self.count_no_overlap(item2, overlap[idx + 1:])
         return item["len"]
 
     def reduce_input(self, t):
@@ -45,11 +45,8 @@ class AOCSolver_2021_22(AOCSolver):
         for i in item:
             if i == "is_on" or i == "len":
                 new_item[i] = item2[i]
-                continue
-            s, e, s2, e2 = item[i][0], item[i][-1], item2[i][0], item2[i][-1]
-            if e2 < s or s2 > e:
-                new_item[i] = []
             else:
-                new_item[i] = range(min(max(s2, s), e), min(max(e2, s), e) + 1)
+                s, e, s2, e2 = item[i][0], item[i][-1], item2[i][0], item2[i][-1]
+                new_item[i] = [] if e2 < s or s2 > e else range(min(max(s2, s), e), min(max(e2, s), e) + 1)
         new_item["len"] = len(new_item["x"])*len(new_item["y"])*len(new_item["z"])
         return new_item

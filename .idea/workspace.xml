@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d0d214da-6475-4430-afd2-ed8ceff65009" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/AOCSolver_2021_22.py" beforeDir="false" afterPath="$PROJECT_DIR$/AOCSolver_2021_22.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/Input_2021day22.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/Input_2021day22.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AOCSolver_2021_22.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+            <state relative-caret-position="243">
+              <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -654,8 +652,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AOCSolver_2021_22.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+        <state relative-caret-position="243">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
         </state>
       </provider>
     </entry>
