@@ -3,10 +3,12 @@ from datetime import datetime
 
 
 class AOCSolver:
-    table = []
-    def __init__(self, n):
+
+    def __init__(self, n, test=False):
+        self.table = []
+        input = "Test" if test else "Input"
         t1 = datetime.now()
-        f = open("input/Input_2021day"+str(n)+".txt", "r").read()
+        f = open("input/"+input+"_2021day"+str(n)+".txt", "r").read()
         self.parse(f)
         t2 = datetime.now()
         print("---")

@@ -10,4 +10,4 @@ class AOCSolver_2021_2(AOCSolver):
         for line in self.table:
             [k, v] = line.split(" ")
             [x, y1, y2] = comp(k, int(v))
-        return x * y1 if part == 1 else x * y2
+        return x * y2 if part == 1 else x * y1

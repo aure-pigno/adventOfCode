@@ -24,64 +24,62 @@ from AOCSolver_2021_23 import AOCSolver_2021_23
 from AOCSolver_2021_24 import AOCSolver_2021_24
 from AOCSolver_2021_25 import AOCSolver_2021_25
 
-def execute(n):
+def execute(n, test=False):
     solver = None
     if n == 1:
-        solver = AOCSolver_2021_1(n)
+        solver = AOCSolver_2021_1(n, test)
     elif n == 2:
-        solver = AOCSolver_2021_2(n)
+        solver = AOCSolver_2021_2(n, test)
     elif n == 3:
-        solver = AOCSolver_2021_3(n)
+        solver = AOCSolver_2021_3(n, test)
     elif n == 4:
-        solver = AOCSolver_2021_4(n)
+        solver = AOCSolver_2021_4(n, test)
     elif n == 5:
-        solver = AOCSolver_2021_5(n)
+        solver = AOCSolver_2021_5(n, test)
     elif n == 6:
-        solver = AOCSolver_2021_6(n)
+        solver = AOCSolver_2021_6(n, test)
     elif n == 7:
-        solver = AOCSolver_2021_7(n)
+        solver = AOCSolver_2021_7(n, test)
     elif n == 8:
-        solver = AOCSolver_2021_8(n)
+        solver = AOCSolver_2021_8(n, test)
     elif n == 9:
-        solver = AOCSolver_2021_9(n)
+        solver = AOCSolver_2021_9(n, test)
     elif n == 10:
-        solver = AOCSolver_2021_10(n)
+        solver = AOCSolver_2021_10(n, test)
     elif n == 11:
-        solver = AOCSolver_2021_11(n)
+        solver = AOCSolver_2021_11(n, test)
     elif n == 12:
-        solver = AOCSolver_2021_12(n)
+        solver = AOCSolver_2021_12(n, test)
     elif n == 13:
-        solver = AOCSolver_2021_13(n)
+        solver = AOCSolver_2021_13(n, test)
     elif n == 14:
-        solver = AOCSolver_2021_14(n)
+        solver = AOCSolver_2021_14(n, test)
     elif n == 15:
-        solver = AOCSolver_2021_15(n)
+        solver = AOCSolver_2021_15(n, test)
     elif n == 16:
-        solver = AOCSolver_2021_16(n)
+        solver = AOCSolver_2021_16(n, test)
     elif n == 17:
-        solver = AOCSolver_2021_17(n)
+        solver = AOCSolver_2021_17(n, test)
     elif n == 18:
-        solver = AOCSolver_2021_18(n)
+        solver = AOCSolver_2021_18(n, test)
     elif n == 19:
-        solver = AOCSolver_2021_19(n)
+        solver = AOCSolver_2021_19(n, test)
     elif n == 20:
-        solver = AOCSolver_2021_20(n)
+        solver = AOCSolver_2021_20(n, test)
     elif n == 21:
-        solver = AOCSolver_2021_21(n)
+        solver = AOCSolver_2021_21(n, test)
     elif n == 22:
-        solver = AOCSolver_2021_22(n)
+        solver = AOCSolver_2021_22(n, test)
     elif n == 23:
-        solver = AOCSolver_2021_23(n)
+        solver = AOCSolver_2021_23(n, test)
     elif n == 24:
-        solver = AOCSolver_2021_24(n)
+        solver = AOCSolver_2021_24(n, test)
     elif n == 25:
-        solver = AOCSolver_2021_25(n)
+        solver = AOCSolver_2021_25(n, test)
 
     solver.solve(1)
     solver.solve(2)
 
 
-for i in range(11, 12):
-    execute(i)
-
-
+#for i in range(1, 24):
+#    execute(i, True)

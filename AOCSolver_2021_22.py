@@ -13,6 +13,7 @@ class AOCSolver_2021_22(AOCSolver):
             self.table.append(dict)
 
     def execute(self, part=1):
+
         t = self.reduce_input(self.table) if part == 1 else helper.copy_table(self.table)
         answer = 0
         for idx, item in enumerate(t):
