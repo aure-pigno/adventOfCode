@@ -30,6 +30,13 @@ def copy_table(table):
     return [elem for elem in table]
 
 
+def copy_map(v_map):
+    new_map = {}
+    for key in v_map:
+        new_map[key] = v_map[key]
+    return new_map
+
+
 def empty_grid(x, y=None):
     return [[0 for i in range(x)] for j in range(x if y is None else y)]
 
