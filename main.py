@@ -23,6 +23,8 @@ from AOCSolver_2021_22 import AOCSolver_2021_22
 from AOCSolver_2021_23 import AOCSolver_2021_23
 from AOCSolver_2021_24 import AOCSolver_2021_24
 from AOCSolver_2021_25 import AOCSolver_2021_25
+from datetime import datetime
+
 
 def execute(n, test=False):
     solver = None
@@ -78,8 +80,12 @@ def execute(n, test=False):
         solver = AOCSolver_2021_25(n, test)
 
     solver.solve(1)
-    solver.solve(2)
+    if n != 25:
+        solver.solve(2)
 
 
-for i in range(24, 25):
-    execute(i)
+t1 = datetime.now()
+for i in range(1, 26):
+    execute(i, False)
+t2 = datetime.now()
+print("Total time", t2 - t1)

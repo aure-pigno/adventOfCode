@@ -37,6 +37,10 @@ def copy_map(v_map):
     return new_map
 
 
+def get_cols(table):
+    return list(map(list, zip(*table)))
+
+
 def empty_grid(x, y=None):
     return [[0 for i in range(x)] for j in range(x if y is None else y)]
 
